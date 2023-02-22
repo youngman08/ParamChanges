@@ -1,0 +1,31 @@
+Government 3% Insurance premium in 1400: 6_861_277_851_777 Rial | 6.861 Hemat
+
+
+The One_x ceil will effect 86.7% of current people
+For those people govern only pay 238_994 Rial per person
+                                                   1_2x        2_3x        3_4x         4_5x         5_6x         6_7x
+total_number                                  9000649.0   2073051.0   1084292.0     466518.0     223549.0     275624.0
+avg_wage                                     37606547.0  65309427.0  91277697.0  117642390.0  144758064.0  177765024.0
+original_govern_share                          338459.0    587785.0    821499.0    1058782.0    1302823.0    1599885.0
+Should pay on new ceil (Rial)                   99464.0    348790.0    582504.0     819787.0    1063828.0    1360890.0
+Should pay on new ceil (Percentage of wage)         0.3         0.5         0.6          0.7          0.7          0.8
+
+
+The Two_x ceil will effect 27.3% of current people
+For those people govern only pay 338_458 Rial per person
+                                                   2_3x        3_4x         4_5x         5_6x         6_7x
+total_number                                  2073051.0   1084292.0     466518.0     223549.0     275624.0
+avg_wage                                     65309427.0  91277697.0  117642390.0  144758064.0  177765024.0
+original_govern_share                          587785.0    821499.0    1058782.0    1302823.0    1599885.0
+Should pay on new ceil (Rial)                  249326.0    483040.0     720323.0     964364.0    1261426.0
+Should pay on new ceil (Percentage of wage)         0.4         0.5          0.6          0.7          0.7
+
+
+The Three_x ceil will effect 13.5% of current people
+For those people govern only pay 587_784 Rial per person
+                                                   3_4x         4_5x         5_6x         6_7x
+total_number                                  1084292.0     466518.0     223549.0     275624.0
+avg_wage                                     91277697.0  117642390.0  144758064.0  177765024.0
+original_govern_share                          821499.0    1058782.0    1302823.0    1599885.0
+Should pay on new ceil (Rial)                  233714.0     470997.0     715038.0    1012100.0
+Should pay on new ceil (Percentage of wage)         0.3          0.4          0.5          0.6
