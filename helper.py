@@ -15,10 +15,14 @@ def format_three_digit(number):
     return result[::-1]
 
 
-def convert_rial_to_hemat(number):
+def rial_to_hemat(number):
     number = int(number)
 
     return round(number / ONE_HEMAT, 3)
+
+
+def rial_to_hunder_toman(number):
+    return round(number / 10000)
 
 
 def calc_gorn_percentage(wage, govern_percentage=0.03):
@@ -34,7 +38,7 @@ def print_govern_total(GOVERN_PERCENTAGE):
         ),
         "Rial",
         "|",
-        convert_rial_to_hemat(
+        rial_to_hemat(
             calc_gorn_percentage(average_income_1400, GOVERN_PERCENTAGE)
             * number_of_bimey_shodegan_1400
         ),
@@ -66,7 +70,9 @@ def insurance_perimum_ceil(
         data = data[["min_wage", "1_2x", "2_3x"]]
         max_supported_salary = data["2_3x"]["avg_wage"]
 
-    max_govern_share_pay = calc_gorn_percentage(max_supported_salary, govern_percentage)
+    max_govern_share_pay = rial_to_hunder_toman(
+        calc_gorn_percentage(max_supported_salary, govern_percentage)
+    )
 
     effected_people = unsuported.loc["total_number"].sum()
     print(
@@ -76,10 +82,10 @@ def insurance_perimum_ceil(
         f"For those people govern only pay {format_three_digit(max_govern_share_pay)} Rial per person"
     )
 
-    unsuported.loc["Should pay on new ceil (Rial)"] = round(
+    unsuported.loc["Should pay on new ceil (hunder toman)"] = round(
         unsuported.loc["original_govern_share"] - max_govern_share_pay
     )
     unsuported.loc["Should pay on new ceil (Percentage of wage)"] = get_percentage(
-        unsuported.loc["Should pay on new ceil (Rial)"], unsuported.loc["avg_wage"]
+        unsuported.loc["Should pay on new ceil (hunder toman)"], unsuported.loc["avg_wage"]
     )
     print(unsuported)

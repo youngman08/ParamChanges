@@ -1,7 +1,8 @@
 import pandas as pd
 
 from enums import MaxWageUpgrade
-from helper import calc_gorn_percentage, insurance_perimum_ceil, print_govern_total
+from helper import (calc_gorn_percentage, insurance_perimum_ceil,
+                    print_govern_total, rial_to_hunder_toman)
 from plot import plot_insurance_perimum_diff
 
 GOVERN_PERCENTAGE = 3 / 100
@@ -21,7 +22,7 @@ table_4 = pd.DataFrame(
     index=["total_number", "avg_wage"],
 )
 
-table_4.loc["original_govern_share"] = round(
+table_4.loc["original_govern_share"] = rial_to_hunder_toman(
     calc_gorn_percentage(table_4.loc["avg_wage"], GOVERN_PERCENTAGE)
 )
 
