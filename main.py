@@ -1,8 +1,8 @@
 import pandas as pd
 
 from enums import MaxWageUpgrade
-from helper import (calc_gorn_percentage, insurance_perimum_ceil,
-                    print_govern_total, rial_to_hunder_toman)
+from helper import calc_gorn_percentage, print_govern_total, rial_to_hunder_toman
+from insurance_perimum_ceil import insurancePerimumCeil
 from plot import plot_insurance_perimum_diff
 
 GOVERN_PERCENTAGE = 3 / 100
@@ -22,11 +22,12 @@ table_4 = pd.DataFrame(
     index=["total_number", "avg_wage"],
 )
 
-table_4.loc["original_govern_share"] = rial_to_hunder_toman(
+table_4.loc["original_govern_share (hunderd toman)"] = rial_to_hunder_toman(
     calc_gorn_percentage(table_4.loc["avg_wage"], GOVERN_PERCENTAGE)
 )
 
 plot_insurance_perimum_diff(table_4)
-insurance_perimum_ceil(MaxWageUpgrade.One_x, table_4, GOVERN_PERCENTAGE)
-insurance_perimum_ceil(MaxWageUpgrade.Two_x, table_4, GOVERN_PERCENTAGE)
-insurance_perimum_ceil(MaxWageUpgrade.Three_x, table_4, GOVERN_PERCENTAGE)
+
+insurancePerimumCeil(MaxWageUpgrade.One_x, table_4, GOVERN_PERCENTAGE).main()
+insurancePerimumCeil(MaxWageUpgrade.Two_x, table_4, GOVERN_PERCENTAGE).main()
+insurancePerimumCeil(MaxWageUpgrade.Three_x, table_4, GOVERN_PERCENTAGE).main()
