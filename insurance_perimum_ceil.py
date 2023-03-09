@@ -2,8 +2,12 @@ import pandas as pd
 from tabulate import tabulate
 
 from enums import MaxWageUpgrade
-from helper import (calc_gorn_percentage, format_three_digit, get_percentage,
-                    rial_to_hunder_toman)
+from helper import (
+    calc_gorn_percentage,
+    format_three_digit,
+    get_percentage,
+    rial_to_hunder_toman,
+)
 
 
 class insurancePerimumCeil:
@@ -58,7 +62,7 @@ class insurancePerimumCeil:
             f"\n\nThe {self.ceil.name} ceil will effect {self.percentage_of_effected_people}% of current people"
         )
         print(
-            f"For those people govern only pay {format_three_digit(max_govern_share_pay)} Rial per person"
+            f"For those people govern only pay {format_three_digit(max_govern_share_pay)} Hunder Toman per person"
         )
 
         print(tabulate(unsuported_people, headers="keys", tablefmt="psql"))
