@@ -1,8 +1,5 @@
-import pandas as pd
-
 from consts import (ONE_HEMAT, average_income_1400,
                     number_of_bimey_shodegan_1400)
-from enums import MaxWageUpgrade
 
 
 def format_three_digit(number):
@@ -27,20 +24,20 @@ def rial_to_hunder_toman(number):
 
 
 def calc_gorn_percentage(wage, govern_percentage=0.03):
-    return wage * 0.3 * govern_percentage
+    return wage * govern_percentage
 
 
-def print_govern_total(GOVERN_PERCENTAGE):
+def print_govern_total(govern_percentage):
     print(
         "Government 3% Insurance premium in 1400:",
         format_three_digit(
-            calc_gorn_percentage(average_income_1400, GOVERN_PERCENTAGE)
+            calc_gorn_percentage(average_income_1400, govern_percentage)
             * number_of_bimey_shodegan_1400
         ),
         "Rial",
         "|",
         rial_to_hemat(
-            calc_gorn_percentage(average_income_1400, GOVERN_PERCENTAGE)
+            calc_gorn_percentage(average_income_1400, govern_percentage)
             * number_of_bimey_shodegan_1400
         ),
         "Hemat",

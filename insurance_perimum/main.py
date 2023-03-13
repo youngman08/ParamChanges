@@ -1,17 +1,15 @@
 import pandas as pd
-
+from consts import GOVERN_PERCENTAGE
 from enums import MaxWageUpgrade
 from helper import calc_gorn_percentage, print_govern_total, rial_to_hunder_toman
 from insurance_perimum_ceil import insurancePerimumCeil
 from plot import plot_insurance_perimum_diff
 
-GOVERN_PERCENTAGE = 3 / 100
-
 print_govern_total(GOVERN_PERCENTAGE)
 
 table_4 = pd.DataFrame(
     {
-        "min_wage": [2006314, 26554950],
+        "min_wage": [2006314, 26_554_950],
         "1_2x": [9000649, 37606547],
         "2_3x": [2073051, 65309427],
         "3_4x": [1084292, 91277697],

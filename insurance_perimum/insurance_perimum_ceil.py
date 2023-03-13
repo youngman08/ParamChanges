@@ -1,13 +1,9 @@
 import pandas as pd
+from enums import MaxWageUpgrade
 from tabulate import tabulate
 
-from enums import MaxWageUpgrade
-from helper import (
-    calc_gorn_percentage,
-    format_three_digit,
-    get_percentage,
-    rial_to_hunder_toman,
-)
+from helper import (calc_gorn_percentage, format_three_digit, get_percentage,
+                      rial_to_hunder_toman)
 
 
 class insurancePerimumCeil:
@@ -30,12 +26,12 @@ class insurancePerimumCeil:
         elif self.ceil == MaxWageUpgrade.Two_x:
             unsuported = self.data.drop(["min_wage", "1_2x"], axis=1)
             self.data = self.data[["min_wage", "1_2x"]]
-            max_supported_salary = self.data["1_2x"]["avg_wage"]
+            max_supported_salary = self.data["min_wage"]["avg_wage"] * 2
 
         elif self.ceil == MaxWageUpgrade.Three_x:
             unsuported = self.data.drop(columns=["min_wage", "1_2x", "2_3x"])
             self.data = self.data[["min_wage", "1_2x", "2_3x"]]
-            max_supported_salary = self.data["2_3x"]["avg_wage"]
+            max_supported_salary = self.data["min_wage"]["avg_wage"] * 3
 
         max_govern_share_pay = rial_to_hunder_toman(
             calc_gorn_percentage(max_supported_salary, self.govern_percentage)
@@ -55,9 +51,20 @@ class insurancePerimumCeil:
             unsuported.loc["avg_wage"],
         )
 
-        self.print_log(effected_people, max_govern_share_pay, unsuported)
+        unsuported.loc["Goverment pay per group"] = (
+            unsuported.loc["Should pay on new ceil (hunder toman)"]
+            * unsuported.loc["total_number"]
+        )
 
-    def print_log(self, effected_people, max_govern_share_pay, unsuported_people):
+        total_govern_pay = unsuported.loc["Goverment pay per group"].sum()
+
+        self.print_log(
+            effected_people, max_govern_share_pay, unsuported, total_govern_pay
+        )
+
+    def print_log(
+        self, effected_people, max_govern_share_pay, unsuported_people, total_govern_pay
+    ):
         print(
             f"\n\nThe {self.ceil.name} ceil will effect {self.percentage_of_effected_people}% of current people"
         )
@@ -66,3 +73,7 @@ class insurancePerimumCeil:
         )
 
         print(tabulate(unsuported_people, headers="keys", tablefmt="psql"))
+
+        print(
+            f"Goverment save on new ceil {format_three_digit(total_govern_pay)} Hunderds Toman"
+        )
