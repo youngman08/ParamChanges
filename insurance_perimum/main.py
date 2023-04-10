@@ -26,6 +26,12 @@ table_4.loc["original_govern_share (hunderd toman)"] = rial_to_hunder_toman(
 
 plot_insurance_perimum_diff(table_4)
 
-insurancePerimumCeil(MaxWageUpgrade.One_x, table_4, GOVERN_PERCENTAGE).main()
-insurancePerimumCeil(MaxWageUpgrade.Two_x, table_4, GOVERN_PERCENTAGE).main()
-insurancePerimumCeil(MaxWageUpgrade.Three_x, table_4, GOVERN_PERCENTAGE).main()
+insurancePerimumCeil(
+    MaxWageUpgrade.One_x, table_4, GOVERN_PERCENTAGE, save_as_csv=True
+).main()
+insurancePerimumCeil(
+    MaxWageUpgrade.Two_x, table_4, GOVERN_PERCENTAGE, save_as_csv=True
+).main()
+insurancePerimumCeil(
+    MaxWageUpgrade.Three_x, table_4, GOVERN_PERCENTAGE, save_as_csv=True
+).main()
