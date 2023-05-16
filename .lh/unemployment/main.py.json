@@ -1,0 +1,18 @@
+{
+    "sourceFile": "unemployment/main.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1684209094206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1684209094206,
+            "name": "Commit-0",
+            "content": "from consts import MIN_MONTHLY_INCOME_1396_RIAL, PERSON_MONTH_IN_1396\r\nfrom helper import rial_to_hemat\r\n\r\n\r\ndef calc_monthly_unimployment_wage():\r\n    return round(MIN_MONTHLY_INCOME_1396_RIAL * 0.55, 3)\r\n\r\n\r\ndef easy_way():\r\n    print(\"Cost for unemployment Insurance in 1396 =>\")\r\n    cost_in_rial = 40_329_138 * 1000_000  # Convert milion rial to rial\r\n    print(f\"{rial_to_hemat(cost_in_rial )} Hemat\")\r\n    print(\"-\" * 50)\r\n\r\n\r\ndef hard_way():\r\n    goverment_cost_yearly = PERSON_MONTH_IN_1396 * calc_monthly_unimployment_wage()\r\n    print(f\"{rial_to_hemat(goverment_cost_yearly)} Hemat\")\r\n    print(\"-\" * 50)\r\n\r\n\r\neasy_way()\r\nhard_way()\r\n"
+        }
+    ]
+}

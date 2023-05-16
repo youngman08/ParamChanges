@@ -2,17 +2,26 @@ import pandas as pd
 from enums import MaxWageUpgrade
 from tabulate import tabulate
 
-from helper import (calc_gorn_percentage, format_three_digit, get_percentage,
-                      rial_to_hunder_toman)
+from helper import (
+    calc_gorn_percentage,
+    format_three_digit,
+    get_percentage,
+    rial_to_hunder_toman,
+)
 
 
 class insurancePerimumCeil:
     def __init__(
-        self, ceil: MaxWageUpgrade, data: pd.DataFrame, govern_percentage: float
+        self,
+        ceil: MaxWageUpgrade,
+        data: pd.DataFrame,
+        govern_percentage: float,
+        save_as_csv: bool = True,
     ) -> None:
         self.ceil = ceil
         self.data = data
         self.govern_percentage = govern_percentage
+        self.save_as_csv = save_as_csv
 
         self.total_number_of_people = data.loc["total_number"].sum()
 
@@ -58,13 +67,9 @@ class insurancePerimumCeil:
 
         total_govern_pay = unsuported.loc["Goverment pay per group"].sum()
 
-        self.print_log(
-            effected_people, max_govern_share_pay, unsuported, total_govern_pay
-        )
+        self.print_log(max_govern_share_pay, unsuported, total_govern_pay)
 
-    def print_log(
-        self, effected_people, max_govern_share_pay, unsuported_people, total_govern_pay
-    ):
+    def print_log(self, max_govern_share_pay, unsuported_people, total_govern_pay):
         print(
             f"\n\nThe {self.ceil.name} ceil will effect {self.percentage_of_effected_people}% of current people"
         )
@@ -77,3 +82,6 @@ class insurancePerimumCeil:
         print(
             f"Goverment save on new ceil {format_three_digit(total_govern_pay)} Hunderds Toman"
         )
+
+        if self.save_as_csv:
+            unsuported_people.to_csv(f"./csv/unsuported_people_{self.ceil.name}.csv")
