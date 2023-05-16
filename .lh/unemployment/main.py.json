@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1684209094206,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1684209345385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n def easy_way():\r\n     print(\"Cost for unemployment Insurance in 1396 =>\")\r\n     cost_in_rial = 40_329_138 * 1000_000  # Convert milion rial to rial\r\n-    print(f\"{rial_to_hemat(cost_in_rial )} Hemat\")\r\n+    print(f\"{rial_to_hemat(cost_in_rial)} Hemat\")\r\n     print(\"-\" * 50)\r\n \r\n \r\n def hard_way():\r\n@@ -19,5 +19,5 @@\n     print(\"-\" * 50)\r\n \r\n \r\n easy_way()\r\n-hard_way()\r\n+hard_way()\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1684209094206,
