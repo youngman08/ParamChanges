@@ -1,0 +1,22 @@
+{
+    "sourceFile": "main.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1679847859535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1679848106773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,8 +28,11 @@\n \r\n insurancePerimumCeil(MaxWageUpgrade.One_x, table_4, GOVERN_PERCENTAGE).main()\r\n insurancePerimumCeil(MaxWageUpgrade.Two_x, table_4, GOVERN_PERCENTAGE).main()\r\n insurancePerimumCeil(MaxWageUpgrade.Three_x, table_4, GOVERN_PERCENTAGE).main()\r\n-df = pd.DataFrame({'name': ['Raphael', 'Donatello'],\r\n-                   'mask': ['red', 'purple'],\r\n-                   'weapon': ['sai', 'bo staff']})\r\n-df.to_csv(index=False)\r\n+data = {'name': ['Alice', 'Bob', 'Charlie', 'David'],\r\n+        'age': [25, 32, 18, 47],\r\n+        'city': ['New York', 'Paris', 'London', 'Tokyo']}\r\n+df = pd.DataFrame(data)\r\n+\r\n+# save the DataFrame to a CSV file\r\n+df.to_csv('my_data.csv', index=False)\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1679847859535,
+            "name": "Commit-0",
+            "content": "import pandas as pd\r\nfrom consts import GOVERN_PERCENTAGE\r\nfrom enums import MaxWageUpgrade\r\nfrom helper import calc_gorn_percentage, print_govern_total, rial_to_hunder_toman\r\nfrom insurance_perimum_ceil import insurancePerimumCeil\r\nfrom plot import plot_insurance_perimum_diff\r\n\r\nprint_govern_total(GOVERN_PERCENTAGE)\r\n\r\ntable_4 = pd.DataFrame(\r\n    {\r\n        \"min_wage\": [2006314, 26_554_950],\r\n        \"1_2x\": [9000649, 37606547],\r\n        \"2_3x\": [2073051, 65309427],\r\n        \"3_4x\": [1084292, 91277697],\r\n        \"4_5x\": [466518, 117642390],\r\n        \"5_6x\": [223549, 144758064],\r\n        \"6_7x\": [275624, 177765024],\r\n    },\r\n    index=[\"total_number\", \"avg_wage\"],\r\n)\r\n\r\ntable_4.loc[\"original_govern_share (hunderd toman)\"] = rial_to_hunder_toman(\r\n    calc_gorn_percentage(table_4.loc[\"avg_wage\"], GOVERN_PERCENTAGE)\r\n)\r\n\r\nplot_insurance_perimum_diff(table_4)\r\n\r\ninsurancePerimumCeil(MaxWageUpgrade.One_x, table_4, GOVERN_PERCENTAGE).main()\r\ninsurancePerimumCeil(MaxWageUpgrade.Two_x, table_4, GOVERN_PERCENTAGE).main()\r\ninsurancePerimumCeil(MaxWageUpgrade.Three_x, table_4, GOVERN_PERCENTAGE).main()\r\ndf = pd.DataFrame({'name': ['Raphael', 'Donatello'],\r\n                   'mask': ['red', 'purple'],\r\n                   'weapon': ['sai', 'bo staff']})\r\ndf.to_csv(index=False)\r\n"
+        }
+    ]
+}
