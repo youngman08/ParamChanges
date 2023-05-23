@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1684209094206,
@@ -12,6 +12,10 @@
                 {
                     "date": 1684209345385,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n def easy_way():\r\n     print(\"Cost for unemployment Insurance in 1396 =>\")\r\n     cost_in_rial = 40_329_138 * 1000_000  # Convert milion rial to rial\r\n-    print(f\"{rial_to_hemat(cost_in_rial )} Hemat\")\r\n+    print(f\"{rial_to_hemat(cost_in_rial)} Hemat\")\r\n     print(\"-\" * 50)\r\n \r\n \r\n def hard_way():\r\n@@ -19,5 +19,5 @@\n     print(\"-\" * 50)\r\n \r\n \r\n easy_way()\r\n-hard_way()\r\n+hard_way()\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1684854045748,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,26 @@\n-from consts import MIN_MONTHLY_INCOME_1396_RIAL, PERSON_MONTH_IN_1396\r\n+from consts import MIN_MONTHLY_INCOME_1396_RIAL\r\n from helper import rial_to_hemat\r\n+import pandas as pd\r\n \r\n \r\n def calc_monthly_unimployment_wage():\r\n     return round(MIN_MONTHLY_INCOME_1396_RIAL * 0.55, 3)\r\n \r\n \r\n-def easy_way():\r\n-    print(\"Cost for unemployment Insurance in 1396 =>\")\r\n-    cost_in_rial = 40_329_138 * 1000_000  # Convert milion rial to rial\r\n-    print(f\"{rial_to_hemat(cost_in_rial)} Hemat\")\r\n+def direct_unimployment():\r\n+    unimp = pd.Series(\r\n+        {\r\n+            \"1396\": rial_to_hemat(40_329_138 * 1000_000),\r\n+            \"1395\": rial_to_hemat(33_244_992 * 1000_000),\r\n+            \"1394\": rial_to_hemat(25_641_847 * 1000_000),\r\n+            \"1393\": rial_to_hemat(20_002_089 * 1000_000),\r\n+            \"1392\": rial_to_hemat(17_597_887 * 1000_000),\r\n+        },\r\n\\ No newline at end of file\n+    )  # All in Hemat\r\n+    print(\"Cost for unemployment Insurance (Hemat)=>\")\r\n+    print(unimp)\r\n+    unimp.to_csv(\"./csv/unimployment_direct.csv\")\r\n     print(\"-\" * 50)\r\n \r\n \r\n-def hard_way():\r\n-    goverment_cost_yearly = PERSON_MONTH_IN_1396 * calc_monthly_unimployment_wage()\r\n-    print(f\"{rial_to_hemat(goverment_cost_yearly)} Hemat\")\r\n-    print(\"-\" * 50)\r\n-\r\n-\r\n-easy_way()\r\n-hard_way()\n+direct_unimployment()\r\n"
                 }
             ],
             "date": 1684209094206,
