@@ -1,7 +1,6 @@
-,2_3x,3_4x,4_5x,5_6x,6_7x
-total_number,2073051.0,1084292.0,466518.0,223549.0,275624.0
-avg_wage,65309427.0,91277697.0,117642390.0,144758064.0,177765024.0
-original_govern_share (hunderd toman),196.0,274.0,353.0,434.0,533.0
-Should pay on new ceil (hunder toman),37.0,115.0,194.0,275.0,374.0
-Should pay on new ceil (Percentage of wage),0.0,0.0,0.0,0.0,0.0
-Goverment pay per group,76702887.0,124693580.0,90504492.0,61475975.0,103083376.0
+groups,total_number,avg_wage,original_govern_share (hunderd toman),Should pay on new ceil (hunder toman),Should pay on new ceil (Percentage of wage),Goverment pay per group
+2_3x,2073051,65309427,196,37,0,76702887
+3_4x,1084292,91277697,274,115,0,124693580
+4_5x,466518,117642390,353,194,0,90504492
+5_6x,223549,144758064,434,275,0,61475975
+6_7x,275624,177765024,533,374,0,103083376
