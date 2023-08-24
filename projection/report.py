@@ -6,14 +6,15 @@ def print_seprated_red_line():
     print(
         Fore.GREEN + "----------------------------------------------------------------"
     )
-    print(Style.RESET_ALL + "\t")
+    print(Style.RESET_ALL + "", end="")
 
 
-def print_general_report(bazneshasteh, bimehPardaz):
+def print_general_report(bazneshasteh, bimehPardaz, year):
     payment_obligation = get_df_salary_sum(bazneshasteh)
     payment_obligation_in_hemat = rial_to_hemat(payment_obligation)
 
     print_seprated_red_line()
+    print(f"     YEAR : {year}")
     print(
         f"""Bazneshaste Report:
     Payment Obligation : {payment_obligation_in_hemat} Hemat

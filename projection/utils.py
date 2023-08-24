@@ -10,9 +10,10 @@ def add_death_rate(df):
         (60 > df["age"]) & (df["age"] >= 50),
         (70 > df["age"]) & (df["age"] >= 60),
         (80 > df["age"]) & (df["age"] >= 70),
-        (df["age"] >= 80),
+        (90 > df["age"]) & (df["age"] >= 80),
+        (df["age"] >= 90),
     ]
-    death_percents = [0.01, 0.02, 0.03, 0.05, 0.1]
+    death_percents = [0.01, 0.02, 0.03, 0.25, 0.4, 0.5]
 
     df["death_percentage"] = np.select(conditions, death_percents)
     return df
@@ -49,7 +50,12 @@ def add_inflation_to_salaries(df: pd.DataFrame, rate: int):
 
 
 def calculate_deaths(df: pd.DataFrame):
-    df["number"] = df["number"] * (1 - df["death_percentage"])
+    df["number"] = (df["number"] * (1 - df["death_percentage"])).astype(int)
+    return df
+
+
+def add_to_ages(df):
+    df["age"] += 1
     return df
 
 
@@ -59,8 +65,13 @@ def calculate_Bazneshasteha(
     current_bazneshasteha = formula(bimehPardaz)
     bimehPardaz.drop(current_bazneshasteha.index, inplace=True)
 
-    print(past_bazneshasteha)
-    past_bazneshasteha.add(current_bazneshasteha)
-    print(current_bazneshasteha)
+    merged = pd.merge(
+        past_bazneshasteha,
+        current_bazneshasteha[["age", "number"]],
+        on="age",
+        how="left",
+    )
+    merged["number"] = merged["number_x"].fillna(0) + merged["number_y"].fillna(0)
+    merged = merged.drop(columns=["number_x", "number_y"])
 
-    return past_bazneshasteha
+    return merged
