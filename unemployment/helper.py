@@ -15,7 +15,7 @@ def format_three_digit(number):
 def rial_to_hemat(number):
     number = int(number)
 
-    return round(number / ONE_HEMAT, 3)
+    return round(number / (ONE_HEMAT * 10), 3)
 
 
 def rial_to_hunder_toman(number):
